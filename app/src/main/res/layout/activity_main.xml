@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/mainbg">
+
+
+
+
+    <RelativeLayout
+        android:id="@+id/buttomlayout"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_alignParentBottom="true"
+        android:background="#33EEEEEE"
+        >
+
+
+
+        <ImageView
+            android:id="@+id/status_listen"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_centerVertical="true"
+            android:background="@mipmap/status_listen"
+            android:layout_margin="10dp"/>
+
+        <TextView
+            android:id="@+id/bottom_song_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="21sp"
+            android:textStyle="bold"
+
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="95dp"
+            />
+
+        <TextView
+            android:id="@+id/bottom_singer_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="16sp"
+            android:layout_below="@id/bottom_song_name"
+            android:layout_alignLeft="@id/bottom_song_name"
+            android:layout_marginTop="10dp"
+            />
+
+        <ImageView
+            android:id="@+id/iv_last"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="130dp"
+            android:src="@mipmap/last"
+            />
+
+        <ImageView
+            android:id="@+id/iv_play"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="70dp"
+            android:src="@mipmap/play"
+            />
+
+        <ImageView
+            android:id="@+id/iv_next"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:src="@mipmap/next"
+            />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/seekbar_block"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_above="@+id/buttomlayout"
+        android:background="#33F0F8FF"
+        >
+
+
+        <SeekBar
+            android:id="@+id/seekbar"
+            style="@android:style/Widget.Holo.Light.SeekBar"
+            android:layout_centerHorizontal="true"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_toEndOf="@+id/seekbar_now_time"
+            android:layout_toStartOf="@+id/seekbar_total_time"
+            android:progress="0"
+
+
+            />
+        <TextView
+            android:id="@+id/seekbar_now_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:text="00:00"
+            android:textColor="#888"
+            android:textSize="16dp"
+            android:layout_marginLeft="5dp"
+            android:layout_centerVertical="true"
+            />
+
+        <TextView
+            android:id="@+id/seekbar_total_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="00:00"
+            android:textColor="#888"
+            android:textSize="16dp"
+            android:layout_marginRight="5dp"
+            android:layout_centerVertical="true"
+            />
+
+    </RelativeLayout>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/music_rv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/seekbar_block">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+</RelativeLayout>
