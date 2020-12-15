@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     //将long数据转为'mm:ss'格式展示
     SimpleDateFormat sdf = new SimpleDateFormat("mm:ss");
 
-    //记录当前播放音乐的位置
+    //记录当前播放音乐在整个音乐列表的位置
     int currentPlayPosition = -1;
 
     //记录暂停播放时的进度条
@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private MusicAdapter adapter;
 
+    /*进度条传递消息，通知主线程更新ui*/
     private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -68,9 +69,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Intent intent = getIntent();
-        currentPlayPosition = intent.getIntExtra("i", 0);
+       // Intent intent = getIntent();
+      //  currentPlayPosition = intent.getIntExtra("i", 0);
 
+        /*初始化控件*/
         iniView();
 
         mediaPlayer = new MediaPlayer();
@@ -90,8 +92,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         musicRv.setAdapter(adapter);
 
         //设置布局管理器
+        //指定RecyclerView的线性布局
         LinearLayoutManager layoutManager = new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
         musicRv.setLayoutManager(layoutManager);
+
 
         //设置音乐进度条
         seekBar=findViewById(R.id.seekbar);
@@ -106,6 +110,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
+
 
             }
 
@@ -143,6 +148,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         @Override
         public void run() {
+
             while (mediaPlayer != null && isStop == false&& mediaPlayer.isPlaying()) {
                 // 将SeekBar位置设置到当前播放位置
                 handler.sendEmptyMessage(mediaPlayer.getCurrentPosition());
@@ -166,8 +172,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         singerTv.setText(musicbean.getSinger());
         totalTime.setText(musicbean.getTime());
 
-
-
+        /*停止当前播放的音乐 开始新一轮的播放*/
         stopMusic();
 
         //重置mediaplayer
@@ -176,8 +181,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         try {
             mediaPlayer.setDataSource(musicbean.getPath());
             playMusic();
-
-            new Thread(new SeekBarThread()).start();//线程开启
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -192,6 +195,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             if(currentPauseInSongPosition==0){
                 try {
+
+
                     mediaPlayer.prepare();
                     mediaPlayer.start();
                 } catch (IOException e) {
@@ -203,6 +208,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 mediaPlayer.start();
             }
 
+            new Thread(new SeekBarThread()).start();//线程开启
 
             seekBar.setMax(mediaPlayer.getDuration());
             playIv.setImageResource(R.mipmap.pause);
@@ -278,7 +284,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             musicData.add(new musicbean(sid,song,singer,album,time,path));
         }
 
-        adapter.notifyDataSetChanged();
+        if(musicData.size()!=0){
+            adapter.notifyDataSetChanged();
+        }
+
     }
 
     private void iniView() {

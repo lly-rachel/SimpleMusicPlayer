@@ -9,7 +9,7 @@
     android:layout_marginTop="10dp"
 
     android:background="@color/colorBlue"
-    app:contentPadding="10dp"
+    app:contentPadding="5dp"
     app:cardCornerRadius="5dp"
     app:cardElevation="1dp"
     app:cardBackgroundColor="@color/colorBlue"
@@ -35,24 +35,24 @@
             android:id="@+id/item_music_song"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=""
+            android:text="歌曲"
             android:textSize="20dp"
             android:textStyle="bold"
             android:layout_toRightOf="@+id/item_music_number"
             android:singleLine="true"
             android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="6dp"
             />
 
         <TextView
             android:id="@+id/item_music_singer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=""
+            android:text="歌手"
             android:layout_below="@+id/item_music_song"
             android:layout_alignLeft="@id/item_music_song"
-            android:layout_marginTop="8dp"
-            android:textSize="16dp"
+            android:layout_marginTop="3dp"
+            android:textSize="15dp"
             android:textColor="#888"
             />
 
@@ -63,7 +63,7 @@
             android:background="#888"
             android:layout_below="@+id/item_music_song"
             android:layout_toRightOf="@+id/item_music_singer"
-            android:layout_marginTop="11dp"
+            android:layout_marginTop="4dp"
             android:layout_marginLeft="10dp"
             />
 
@@ -71,13 +71,13 @@
             android:id="@+id/item_music_album"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=""
+            android:text="专辑"
             android:textColor="#888"
-            android:textSize="16dp"
+            android:textSize="15dp"
             android:layout_below="@+id/item_music_song"
             android:layout_toRightOf="@+id/item_music_line"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="3dp"
             android:singleLine="true"
             android:ellipsize="end"
             />
@@ -88,9 +88,10 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/item_music_singer"
             android:layout_alignParentRight="true"
-            android:text=""
+
+            android:text="04：50"
             android:textColor="#888"
-            android:textSize="16dp"
+            android:textSize="15dp"
             android:layout_marginRight="5dp"
             android:layout_marginBottom="5dp"
             />
